@@ -29,29 +29,19 @@
 <body>
 
   <h1>⏱ Simple Stopwatch</h1>
-  
-  <!-- Stopwatch Display -->
   <div class="time" id="display">00:00:00</div>
-
-  <!-- Buttons -->
   <button onclick="start()">Start</button>
   <button onclick="pause()">Pause</button>
   <button onclick="reset()">Reset</button>
   <button onclick="lap()">Lap</button>
-
-  <!-- Lap Times -->
   <h2>Laps</h2>
   <ul id="laps"></ul>
 
   <script>
-    // Variables to keep track of time
     let seconds = 0, minutes = 0, hours = 0;
-    let timer;        // To store setInterval
-    let isRunning = false;  // Check if stopwatch is running
-
-    // Function to update the display
+    let timer;      
+    let isRunning = false;  
     function updateDisplay() {
-      // Format time with leading zeros
       let h = String(hours).padStart(2, '0');
       let m = String(minutes).padStart(2, '0');
       let s = String(seconds).padStart(2, '0');
@@ -59,7 +49,6 @@
       document.getElementById("display").innerText = `${h}:${m}:${s}`;
     }
 
-    // Start the stopwatch
     function start() {
       if (!isRunning) {
         isRunning = true;
@@ -74,17 +63,15 @@
             hours++;
           }
           updateDisplay();
-        }, 1000); // Update every 1 second
+        }, 1000); 
       }
     }
 
-    // Pause the stopwatch
     function pause() {
       clearInterval(timer);
       isRunning = false;
     }
 
-    // Reset stopwatch and clear laps
     function reset() {
       clearInterval(timer);
       isRunning = false;
@@ -95,7 +82,6 @@
       document.getElementById("laps").innerHTML = "";
     }
 
-    // Record a lap time
     function lap() {
       if (isRunning) {
         let lapTime = document.getElementById("display").innerText;
@@ -105,7 +91,6 @@
       }
     }
 
-    // Initialize display
     updateDisplay();
   </script>
 
